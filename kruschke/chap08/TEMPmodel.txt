@@ -1,0 +1,9 @@
+ model{
+                for(i in 1:Ntotal){
+                        
+                        y[i] ~ dbern(theta) # Likelihood
+                }
+                
+                theta ~ dbeta(1, 1) # vague prior - uniform
+        }
+
