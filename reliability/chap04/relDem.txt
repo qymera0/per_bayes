@@ -1,0 +1,19 @@
+model{
+
+                lambda <- 1/pow(scale, shape)
+
+                reliability <- exp(-pow(15/scale, shape))
+
+                for(i in 1:n){
+
+                        Censor[i] ~ dinterval(ttf[i], CenLimit[i])
+                        
+                        ttf[i] ~ dweib(shape, lambda)
+
+                }
+
+                shape ~ dgamma(1,1)
+
+                scale ~ dgamma(1,0.1)
+        }
+

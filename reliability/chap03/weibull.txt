@@ -1,0 +1,14 @@
+model{
+
+                lambda <- 1/pow(scale, shape) # JAGS Weibull Reparametrization
+
+                for(i in 1:n){
+
+                        ttf[i] ~ dweib(shape, lambda) # Likelihood
+                }
+
+                # Priors specification
+                shape ~ dunif(1,3)
+                scale ~ dunif(60,130)
+        }
+

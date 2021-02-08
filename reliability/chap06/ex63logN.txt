@@ -1,0 +1,13 @@
+model{
+
+                for(i in 1:n){
+
+                                y[i] ~ dlnorm(mu, 1/sigma^2)
+                }
+
+                mu ~ dnorm(0, 0.000001)
+
+                sigma ~ dunif(0.01, 100)
+
+        }
+

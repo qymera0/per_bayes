@@ -1,0 +1,14 @@
+model{
+
+                lambda <- 1/pow(scale, shape) # JAGS Weibull Reparametrization
+
+                for(i in 1:n){
+
+                        ttf[i] ~ dweib(shape, lambda) # Likelihood
+                }
+
+                # Priors specification
+                shape ~ dgamma(1,1) # mean = a/b; variance = a/(b<U+2227>2)
+                scale ~ dgamma(1,0.1)
+        }
+
