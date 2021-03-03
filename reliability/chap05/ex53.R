@@ -1,7 +1,8 @@
 
 # 0 LOAD PACKAGES ---------------------------------------------------------
 
-library(tidyverse)
+library(dplyr)
+library(ggplot2)
 library(ggfortify)
 library(readODS)
 library(rjags)

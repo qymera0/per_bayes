@@ -1,7 +1,7 @@
 
 # 0 LOAD PACAKGES ---------------------------------------------------------
 
-library(tidyverse)
+library(dplyr)
 library(rjags)
 library(HDInterval)
 

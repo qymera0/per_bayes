@@ -4,7 +4,8 @@
 # 1 LOAD PACKAGES ---------------------------------------------------------
 
 library(rjags)
-library(tidyverse)
+library(dplyr)
+library(ggplot2)
 library(ggfortify)
 library(HDInterval)
 
