@@ -1,0 +1,14 @@
+model {
+# Likelihood:
+lambda <- 1/pow(scale, shape)
+reliability <- exp(-pow(4/scale,shape))   # reliability of ith product at 15 years
+
+for( i in 1:n) {        
+Censor[i] ~ dinterval(ttf[i], CenLimit[i])
+ttf[i] ~ dweib(shape, lambda)
+}
+
+# Vague Gamma distribution for shape and scale prior
+shape ~ dgamma(1,1) # mean = a/b; variance = a/(b^2)
+scale ~ dgamma(1,0.1)
+}

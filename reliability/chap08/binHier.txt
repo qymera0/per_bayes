@@ -1,0 +1,26 @@
+
+        model{
+
+                # Likelyhood
+                
+                for(i in 1:9){
+
+                        theta[i] ~ dbeta(alpha + 1, beta + 1)
+
+                        succ[i] ~ dbin(theta[i], n[i])
+
+                }
+
+                # Priors
+
+                alpha ~ dgamma(1, 1)
+
+                beta ~ dgamma(1, 1)
+
+                # Prediction to 10th generation
+
+                theta[10] ~ dbeta(alpha + 1, beta + 1)
+
+        }
+
+

@@ -1,0 +1,29 @@
+model {
+    # Likelihood:
+    for( i in 1:10) {
+
+        lambda[i] <- 1/pow(scale[i], shape[i])
+        reliability[i] <- exp(-pow(84/scale[i],shape[i]))   # reliability of ith product at 84 months
+        
+        for( j in 1:100){
+            Censor[j,i] ~ dinterval(ttf[j,i], CenLimit[j,i])
+            ttf[j,i] ~ dweib(shape[i], lambda[i])
+        }
+
+        # vague Gamma distribution for shape and scale priors
+        shape[i] ~ dgamma(a,b) # mean = a/b; variance = a/(b^2)
+        scale[i] ~ dgamma(c,d)
+    }
+
+    # hyperpriors
+#     a ~ dnorm(1, 25)
+#     b ~ dnorm(1, 25)
+#     c ~ dnorm(36, 0.1)
+#     d ~ dnorm(0.06, 2500)    
+    
+    # flat hyperpriors 
+    a ~ dunif(0.001, 100)
+    b ~ dunif(0.001, 100)
+    c ~ dunif(0.001, 100)
+    d ~ dunif(0.001, 100)
+}

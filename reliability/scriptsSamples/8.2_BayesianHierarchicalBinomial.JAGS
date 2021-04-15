@@ -1,0 +1,13 @@
+model {
+
+#alpha ~ dunif(0.1, 10)
+alpha ~ dgamma(1, 1) # mean = a/b; variance = a/(b^2)
+beta ~ dgamma(1, 1) # mean = a/b; variance = a/(b^2)
+
+for( i in 1:9) {
+theta[i] ~ dbeta(alpha+1,beta+1)
+Successes[i] ~ dbin(theta[i], SampleSize[i])
+}
+
+theta[10] ~ dbeta(alpha+1,beta+1)
+}

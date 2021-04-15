@@ -1,0 +1,14 @@
+model {
+# Likelihood:
+
+for( i in 1:n) {        
+y[i] ~ dnorm(mu, tau)   # likelihood is Normal distribution
+}
+
+mu ~ dnorm(0,0.000001)  # mean=1, std=1000
+
+# vague gamma (traditional): mean=0.1/0.1=1 & variance=0.1/(0.1*0.1)=10
+   tau ~ dgamma(0.1,0.1)   
+
+sigma <- 1/sqrt(tau)
+}

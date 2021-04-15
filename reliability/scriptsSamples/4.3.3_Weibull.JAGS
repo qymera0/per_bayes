@@ -1,0 +1,23 @@
+#######################################################
+##  Fit data to a Weibull distribution               ##
+##  Data: right censored & uncensored data           ##
+#######################################################
+
+
+## Bayesian model
+
+model {
+# Likelihood:
+lambda <- 1/pow(scale, shape)  # power function pow(x,z) = x^z
+
+for( i in 1:n) {        
+Censor[i] ~ dinterval(ttf[i], CenLimit[i])
+ttf[i] ~ dweib(shape, lambda)
+}
+
+# Vague Gamma distributions for shape and scale prior
+shape ~ dgamma(1,1) # mean = a/b; variance = a/(b^2)
+scale ~ dgamma(1,0.1)
+}
+
+

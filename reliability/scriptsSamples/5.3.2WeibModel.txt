@@ -1,0 +1,14 @@
+
+model{
+for(i in 1:N){
+# The censoring part:
+IsCensored[i] ~ dinterval(TimeToFail[i], CensLimVec[i])
+TimeToFail[i] ~ dweib(beta, lambda) # likelihood is Weibull distribution with beta=3
+}
+lambda ~ dgamma(0.02, 0.1) # Cause a vague prior on eta (Weibull scale parameter)
+beta ~ dgamma(2,0.5) # mean = a/b; variance = a/(b^2) #Vague prior on beta
+eta <- 1/pow(lambda,1/beta)
+#data# N, IsCensored, CensLimVec, TimeToFail
+#monitor# beta, eta
+}
+

@@ -1,0 +1,25 @@
+model{
+   shape ~ dgamma(1,1) # mean=1, stdev=1
+# temp ~ dunif(-10,10) 
+# scale <- exp(temp)    #  Jeffery Scale
+   scale ~ dgamma(1,0.1)
+   lambda <- 1/pow(scale, shape)
+
+   for (i in 1:135) {
+     TTF[i] ~ dweib(shape, lambda)I(t.cen[i], )
+   }
+
+    reliability_9years <- exp(-pow(9/scale,shape))
+    reliability_12years <- exp(-pow(12/scale,shape))
+    reliability_15years <- exp(-pow(15/scale,shape))
+
+  }
+
+# Data:
+list(TTF = c(NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA), 
+t.cen = c(9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21))
+
+	
+# Inits:
+list(shape = 2, scale = 10)
+list(shape = 4, scale =20)

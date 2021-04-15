@@ -1,0 +1,16 @@
+model {
+
+for( i in 1:n) {
+
+# likelihood is Normal distribution of log(y) with mean = mu and sd = sigma, 
+# or a Lognormal distribution of y
+y[i] ~ dlnorm( mu, 1/sigma^2 )  # mu and sigma are parameters of log(Y)
+} 
+
+# non-informative priors
+mu ~ dnorm(0,0.000001)  # mean=1, std=1000
+sigma ~ dunif(0.01,100) 
+
+# tau ~ dgamma(0.1,0.1) # vague gamma (traditional): mean=1 & variance=10  
+# sigma <- 1/sqrt(tau)
+}

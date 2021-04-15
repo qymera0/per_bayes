@@ -1,0 +1,12 @@
+model {
+for( i in 1:n) {
+#Handling the censored data
+Censor[i] ~ dinterval(ttf[i], CenLimit[i])
+# lognormal likelihood using mean mu and precision tau (=1/sigma^2) in the log-scale, 
+ttf[i] ~ dlnorm(mu,tau)   
+} 
+
+mu ~ dnorm(0,0.000001)  # mean=1, std=1000
+tau ~ dgamma(0.1,0.1) # vague gamma (traditional): mean=1 & variance=10  
+sigma <- 1/sqrt(tau)
+}

@@ -1,0 +1,16 @@
+model{   
+
+# likelihood model: linear regression
+for( i in 1:n) {    
+    	Y[i]  ~ dnorm(mu[i] , tau)    	  	#  regression model
+   	  mu[i] <- beta0 + beta1*x[i]
+} # end of  [i] loop
+
+# diffuse priors
+beta0 ~ dnorm(0,0.001)
+beta1 ~ dnorm(0,0.001)
+
+tau ~ dgamma(0.1, 0.1)   # gamma prior on precision tau
+sigma <- 1/sqrt(tau)  
+
+} #  end of model

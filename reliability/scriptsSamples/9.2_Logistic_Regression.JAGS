@@ -1,0 +1,17 @@
+model{   
+  
+  for( i in 1:n) {    
+    
+    Event[i] ~ dbern( p[i] )
+    
+    # likelihood model: binary logistic regression
+    logit(p[i]) <- beta0 + beta1*offset[i]    	  	#  logistic model
+
+  } # end of  [i] loop
+  
+  # diffuse priors
+  beta0 ~ dnorm(0,0.001)
+  beta1 ~ dnorm(0,0.001)
+  
+}  #  end of model
+

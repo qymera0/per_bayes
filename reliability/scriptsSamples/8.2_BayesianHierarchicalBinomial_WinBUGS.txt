@@ -1,0 +1,31 @@
+model {
+    
+    # vague distributions for mu and N
+    # mu ~ dbeta(1,1)I(0.001,0.999)
+   # mu ~ dbeta(1,1)
+   # N ~ dexp(0.002)
+
+   # alpha <- mu*N
+   # beta <- (1-mu)*N
+
+     alpha ~ dunif(0.1, 10)
+     beta ~ dgamma(1, 0.1)
+     alpha1 <- alpha+1
+     beta1 <- beta+1     
+
+    for( i in 1:9) {
+        p[i] ~ dbeta(alpha1,beta1)
+        Successes[i] ~ dbin(p[i], SampleSize[i])
+    }
+
+}
+
+# Data
+list(  
+  Successes = c(59,59,59,299,299,299,299,59,59),
+  SampleSize = c(59,59,59,299,299,299,299,59,59)
+)
+
+# Inits: 
+list(alpha = 2, beta = 2)
+list(alpha = 1, beta = 1)

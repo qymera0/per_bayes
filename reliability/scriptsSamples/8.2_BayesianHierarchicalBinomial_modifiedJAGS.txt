@@ -1,0 +1,35 @@
+# This code is created by Donnie Musgrove.
+# the creator of Jags has suggested to do this kind of modification 
+# when the results are concentrated to a single value (in fact that is the cases with the data here). 
+# Note that we have 100% success in all cases with the provided data. 
+# It seems this creates a problem with OpenBUGS or WinBUGS sampler. 
+
+setwd(dir="C:/System Engineering/Stat Support/Yan Liu/Bayesian Models")
+
+library(coda)
+library(rjags)
+
+fileConn<-file("C:/System Engineering/Stat Support/Yan Liu/Bayesian Models/SpecialBino.jag")
+writeLines(
+  "model {
+  for( i in 1:9) {
+    Successes[i] ~ dbin(p[i], SampleSize[i])
+    p[i]  ~ dbeta(alpha+1, beta+1)
+  }
+  
+  alpha ~ dunif(0.1, 10)
+  beta ~ dgamma(10, 0.1)
+}", con = fileConn, useBytes=TRUE, sep="\n")
+
+data <- list(Successes = c(59,59,59,299,299,299,299,59,59),
+             SampleSize = c(59,59,59,299,299,299,299,59,59))
+
+inits <- list(alpha=2, beta=100)
+jags.m <- jags.model(file = "SpecialBino.jag", data = data,
+                     inits = inits, n.chains = 1, n.adapt = 100)
+
+samps <- coda.samples(jags.m, c("alpha", "beta", "p"), n.iter =10000)
+
+plot(samps)
+summary(samps)
+close(fileConn)

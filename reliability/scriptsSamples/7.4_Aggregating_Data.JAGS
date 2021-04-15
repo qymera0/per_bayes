@@ -1,0 +1,18 @@
+model {
+
+# prior
+Actual_Failure_Rate ~ dunif(0,1)
+Data_Source_1_Reporting_Rate ~ dunif(0,1)
+Sensitivity ~ dbeta(9,1)
+Specificity ~ dbeta(9,1)
+
+# likelihood
+Data_Source_1_Failure_Rate <- Data_Source_1_Reporting_Rate*Actual_Failure_Rate
+Data_Source_2_Failure_Rate <- Actual_Failure_Rate
+TEST_Failure_Rate <- Sensitivity*Actual_Failure_Rate+(1-Specificity)*(1-Actual_Failure_Rate)
+Reliability <- 1 - Actual_Failure_Rate
+
+Data_Source_1_Failures ~ dbin(Data_Source_1_Failure_Rate, 70351)
+Data_Source_2_Failures ~ dbin(Data_Source_2_Failure_Rate, 1151)
+TEST_Failures ~ dbin(TEST_Failure_Rate, 81)
+}

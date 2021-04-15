@@ -1,0 +1,17 @@
+model {
+# Likelihood:
+lambda <- 1/pow(scale, shape)
+
+for( i in 1:23) {        
+ttf[i] ~ dweib(shape, lambda)I(t.cen[i], )
+}
+
+# Vague Gamma distribution for shape and scale prior
+shape ~ dgamma(1,1) # mean = a/b; variance = a/(b^2)
+scale ~ dgamma(1,0.1)
+}
+
+# Data
+list(ttf = c(11.90, NA, NA, 12.00, 12.00, NA, 12.00, 10.65, 11.47, 12.00, 9.40, 10.65, 11.92, NA, NA, 
+         12.00, NA, 12.00, 12.00, 12.00, NA, NA, 12.00), 
+t.cen = c( 0, 12, 12, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 12, 12, 0, 12, 0, 0, 0, 12, 12, 0))
