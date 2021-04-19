@@ -1,0 +1,40 @@
+
+        model{
+
+                # likelyhood
+
+                for(i in 1:l2){
+
+                        lambda[i] <- 1/pow(scale[i], shape[i])
+                        
+                        rel[i] <- exp(-pow(84/scale[i], shape[i]))
+                        
+                        for(j in 1:l1){
+
+                                 censor[j, i] ~ dinterval(ttf[j, i], cenLimit[j, i])
+                                
+                                 ttf[j, i] ~ dweib(shape[i], lambda[i])
+
+                        }
+
+                        # vague Gamma distribution for shape and scale priors
+
+                        shape[i] ~ dgamma(a, b)
+
+                        scale[i] ~ dgamma(c, d)
+
+                }
+
+                # flat hyperpriors
+
+                a ~ dunif(0.001, 100)
+
+                b ~ dunif(0.001, 100)
+
+                c ~ dunif(0.001, 100)
+
+                d ~ dunif(0.001, 100)
+
+        }
+
+
