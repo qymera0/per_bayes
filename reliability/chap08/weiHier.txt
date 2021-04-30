@@ -27,13 +27,13 @@
 
                 # flat hyperpriors
 
-                a ~ dunif(0.001, 100)
+                a ~ dgamma(6, 0.4)
 
-                b ~ dunif(0.001, 100)
+                b ~ dgamma(2, 0.2)
 
-                c ~ dunif(0.001, 100)
+                c ~ dgamma(1, 1)
 
-                d ~ dunif(0.001, 100)
+                d ~ dgamma(1, 1)
 
         }
 

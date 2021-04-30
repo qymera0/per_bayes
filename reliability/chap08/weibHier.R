@@ -2,6 +2,9 @@
 # 0 LOAD PACKAGES ---------------------------------------------------------
 
 library(rjags)
+library(tidyverse)
+library(brms)
+library(bayesplot)
 
 # 1 LOAD DATA -------------------------------------------------------------
 
@@ -63,13 +66,13 @@ modelString <- "
 
                 # flat hyperpriors
 
-                a ~ dunif(0.001, 100)
+                a ~ dgamma(6, 0.4)
 
-                b ~ dunif(0.001, 100)
+                b ~ dgamma(2, 0.2)
 
-                c ~ dunif(0.001, 100)
+                c ~ dgamma(1, 1)
 
-                d ~ dunif(0.001, 100)
+                d ~ dgamma(1, 1)
 
         }
 
@@ -124,7 +127,7 @@ update(jagsModel, n.iter = 2000)
 
 # Select variables
 
-varNames <- c("a", "b", "c", "d", "shape[10]", "scale[10]", "rel")
+varNames <- c("a", "b", "c", "d", "shape", "scale", "rel")
 
 # Run MCMC
 
@@ -139,5 +142,148 @@ codaList <-
 # 6 EVALUATE CHAINS -------------------------------------------------------
 
 summary(codaList)
+
+# 7 BRMS HIERARCHICAL -----------------------------------------------------
+
+# Gather data data
+
+ttf2 <- gather(as.data.frame(ttf), key = 'Gen', value = 'ttf')
+
+cenLimit2 <- gather(as.data.frame(cenLimit), key = 'Gen', value = 'cenLimit')
+
+censorLg2 <- gather(as.data.frame(censorLg), key = 'Gen', value = 'censorLg')
+
+brmsData <-
+        ttf2 %>%
+        bind_cols(cenLimit2) %>% 
+        bind_cols(censorLg2) %>%
+        select("Gen...1", ttf, cenLimit, censorLg) %>% 
+        rename("gen" = "Gen...1") %>% 
+        mutate(ttf = case_when(is.na(ttf) ~ as.numeric(cenLimit),
+                                 T ~ ttf)) %>%  
+        mutate(censor = as.numeric(censorLg)) %>% 
+        select(gen, ttf, censor) 
+        
+
+brmsModel <-
+        brm(
+                ttf | cens(censor) ~ 1 + (1 | gen),
+                family = weibull,
+                data = brmsData,
+                prior = c(
+                        prior(gamma(1, 1), class = Intercept),
+                        prior(gamma(1, 1), class = shape)
+                ),
+                iter = 41000,
+                warmup = 4000,
+                chains = 4,
+                cores = 4,
+                seed = 4,
+                control = list(adapt_delta = .99)
+        )
+
+summary(brmsModel)
+
+plot(brmsModel)
+
+# Autocorrelation
+
+post <- posterior_samples(brmsModel, add_chain = T)
+
+mcmc_acf(
+        post
+) # All four chains, all gens
+
+brmsModel %>% 
+        neff_ratio() %>% 
+        mcmc_neff_hist(binwidth = .01) + 
+        yaxis_text()
+
+print(brmsModel)
+
+post <-
+        post %>% 
+        as_tibble()
+
+head(post)
+
+# Coefficients
+
+coefGen <-
+        coef(brmsModel, summary = F)$gen %>% 
+        as_tibble()
+
+str(coefGen)
+
+
+# 8 BRMS WITH HIPERPRIORS -------------------------------------------------
+
+priors <-
+        set_prior("gamma(a, b)", class = "Intercept") + 
+        set_prior("gamma(c, d)", class = "shape") + 
+        set_prior("target += gamma_lpdf(a | 6, 0.4) - 1 * gamma_lccdf(0 | 6, 0.4) + 
+                  gamma_lpdf(b | 2, 0.2) - 1 * gamma_lccdf(0 |2, 0.2) ", 
+                  check = FALSE) + 
+        set_prior("target += gamma_lpdf(c | 1, 1) - 1 * gamma_lccdf(0 | 1, 1) + 
+                  gamma_lpdf(d | 1, 1) - 1 * gamma_lccdf(0 | 1, 1) ", 
+                  check = FALSE)
+
+stanvars <-
+        stanvar(scode = "real<lower=0> a; 
+                         real<lower=0> b; 
+                         real<lower=0> c; 
+                         real<lower=0> d;", 
+                block = "parameters")
+        
+brmsHyperModel <-
+        brm(
+                ttf | cens(censor) ~ 1 + (1 | gen),
+                family = weibull,
+                data = brmsData,
+                prior = priors,
+                stanvars = stanvars,
+                iter = 41000,
+                warmup = 4000,
+                chains = 4,
+                cores = 4,
+                seed = 4,
+                control = list(adapt_delta = .99)
+        )
+
+summary(brmsHyperModel)
+
+
+# 9 BRMS SHAPE WITH GROUPS ------------------------------------------------
+
+brmsForm <-
+        bf(
+                ttf | cens(censor) ~ 1 + (1 | gen),
+                shape ~ 1 + (1 | gen)
+        )
+
+priors <-
+        set_prior("gamma(a, b)", class = "Intercept") + 
+        set_prior("gamma(c, d)", class = "shape", group = 'gen' ) + 
+        set_prior("target += gamma_lpdf(a | 6, 0.4) - 1 * gamma_lccdf(0 | 6, 0.4) + 
+                  gamma_lpdf(b | 2, 0.2) - 1 * gamma_lccdf(0 |2, 0.2) ", 
+                  check = FALSE) + 
+        set_prior("target += gamma_lpdf(c | 1, 1) - 1 * gamma_lccdf(0 | 1, 1) + 
+                  gamma_lpdf(d | 1, 1) - 1 * gamma_lccdf(0 | 1, 1) ", 
+                  check = FALSE)
+
+brmsHyperModelScale <-
+        brm(
+                formula = brmsForm,
+                family = weibull,
+                data = brmsData,
+                prior = priors,
+                stanvars = stanvars,
+                iter = 41000,
+                warmup = 4000,
+                chains = 4,
+                cores = 4,
+                seed = 4,
+                control = list(adapt_delta = .99)
+        )
 
 
