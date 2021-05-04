@@ -1,0 +1,20 @@
+
+        model{
+
+                for(i in 1:Ntotal){
+
+                        y[i] ~ dt(mu, 1/sigma^2, nu)
+
+                }
+                
+                mu ~ dnorm(meanY, 1/(100*sdY)^2)
+
+                sigma ~ dunif(sdY/1000, sdY*1000)
+
+                nu <- nuMinusOne + 1
+
+                nuMinusOne ~ dexp(1/29)
+
+        }
+
+

@@ -30,6 +30,13 @@
       "Repository": "CRAN",
       "Hash": "4744be45519d675af66c28478720fce5"
     },
+    "DEoptimR": {
+      "Package": "DEoptimR",
+      "Version": "1.0-8",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "4fdd17df6c1b897cb59bdd9cf6621a43"
+    },
     "DT": {
       "Package": "DT",
       "Version": "0.14",
@@ -723,6 +730,13 @@
       "Repository": "CRAN",
       "Hash": "482e16bfc34b98876704c2b3fcb9f254"
     },
+    "metRology": {
+      "Package": "metRology",
+      "Version": "0.9-28-1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "315b2330d18e3e243b813895e3692209"
+    },
     "mgcv": {
       "Package": "mgcv",
       "Version": "1.8-31",
@@ -981,6 +995,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "202260e1b2c410edc086d5b8f1ed946e"
+    },
+    "robustbase": {
+      "Package": "robustbase",
+      "Version": "0.93-6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "241454e22c9d26b11669b78d06706b41"
     },
     "rpart": {
       "Package": "rpart",
