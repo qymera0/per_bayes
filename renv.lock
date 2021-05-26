@@ -90,12 +90,6 @@
       "Repository": "CRAN",
       "Hash": "df57c82e79600601287edfdcef92c2d6"
     },
-    "MicrosoftR": {
-      "Package": "MicrosoftR",
-      "Version": "4.0.2",
-      "Source": "unknown",
-      "Hash": "67fd48bb24e6f5e6ebdaf01452380890"
-    },
     "R6": {
       "Package": "R6",
       "Version": "2.5.0",
@@ -116,20 +110,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "ddac9abbfba243f9aeab9b5680b968d3"
-    },
-    "RODBC": {
-      "Package": "RODBC",
-      "Version": "1.3-17",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "8e6bcf765e7713e60d0b859d50724355"
-    },
-    "RUnit": {
-      "Package": "RUnit",
-      "Version": "0.4.32",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "11af2a900964b790c6d775e0c9e8025f"
     },
     "Rcpp": {
       "Package": "Rcpp",
@@ -158,30 +138,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "0325b5be38a02d192828027983c7b470"
-    },
-    "RevoIOQ": {
-      "Package": "RevoIOQ",
-      "Version": "10.0.1",
-      "Source": "unknown",
-      "Hash": "014dc795ecc6f8a2e391e70e73f6eb73"
-    },
-    "RevoMods": {
-      "Package": "RevoMods",
-      "Version": "11.0.1",
-      "Source": "unknown",
-      "Hash": "093f7e69ceb53780e35d0626e49628bb"
-    },
-    "RevoUtils": {
-      "Package": "RevoUtils",
-      "Version": "11.0.2",
-      "Source": "unknown",
-      "Hash": "0cca00cb56c77d7da5797997c2ecdc56"
-    },
-    "RevoUtilsMath": {
-      "Package": "RevoUtilsMath",
-      "Version": "11.0.0",
-      "Source": "unknown",
-      "Hash": "e20b28b8e56dafeea42bbf6f3f931f9f"
     },
     "StanHeaders": {
       "Package": "StanHeaders",
@@ -344,13 +300,6 @@
       "Repository": "CRAN",
       "Hash": "a667800d5f0350371bedeb8b8b950289"
     },
-    "checkpoint": {
-      "Package": "checkpoint",
-      "Version": "0.4.10",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "37afbe3f8cb698f02f6ac644f789eaca"
-    },
     "class": {
       "Package": "class",
       "Version": "7.3-19",
@@ -477,12 +426,6 @@
       "Repository": "CRAN",
       "Hash": "1f37fa4ab2f5f7eded42f78b9a887182"
     },
-    "deployrRserve": {
-      "Package": "deployrRserve",
-      "Version": "9.0.0",
-      "Source": "unknown",
-      "Hash": "4ab9dc772a4433dc65d79360d9a27fe8"
-    },
     "desc": {
       "Package": "desc",
       "Version": "1.3.0",
@@ -510,13 +453,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "046f2e782ce27c4d08b02e101aa5fee3"
-    },
-    "doParallel": {
-      "Package": "doParallel",
-      "Version": "1.0.16",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "2dc413572eb42475179bfe0afabd2adf"
     },
     "downloader": {
       "Package": "downloader",
@@ -622,13 +558,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "81c3244cab67468aac4c60550832655d"
-    },
-    "foreach": {
-      "Package": "foreach",
-      "Version": "1.5.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "03d785867f4d0ba7cfcc91579ad8dae0"
     },
     "foreign": {
       "Package": "foreign",
@@ -860,13 +789,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "b2008df40fb297e3fef135c7e8eeec1a"
-    },
-    "iterators": {
-      "Package": "iterators",
-      "Version": "1.0.13",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "64778782a89480e9a644f69aad9a2877"
     },
     "jquerylib": {
       "Package": "jquerylib",
@@ -1409,10 +1331,12 @@
     },
     "rstan": {
       "Package": "rstan",
-      "Version": "2.21.2",
-      "Source": "Repository",
+      "Version": "2.19.3",
+      "Source": "Local",
       "Repository": "CRAN",
-      "Hash": "52772d81aa532a6331fd535701882c12"
+      "RemoteType": "local",
+      "RemoteUrl": "C:/Users/bacos1/Downloads/rstan_2.19.3.tar.gz",
+      "Hash": "9998e3ba5cd9e1466f4f19fa24afc9f1"
     },
     "rstanarm": {
       "Package": "rstanarm",
