@@ -58,3 +58,19 @@ mkMerMod(
         reTrms = parsedFormula$reTrms,
         fr = parsedFormula$fr
 )
+
+
+# 2 FORMULA MODULE --------------------------------------------------------
+
+
+# # 2.2 Understanding mixed model formulas --------------------------------
+
+# formula without correlation parameter
+
+fm2 <-
+        lmer(
+                Reaction ~ Days + (Days || Subject),
+                sleepstudy
+        )
+
+summary(fm2)
