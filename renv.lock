@@ -1893,10 +1893,10 @@
     },
     "survival": {
       "Package": "survival",
-      "Version": "3.2-11",
+      "Version": "3.2-12",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "f4d706b25d640dbaeb56d9c9b6ce9a22"
+      "Hash": "dcdc241a75d17656fec8d02cd8215c39"
     },
     "svUnit": {
       "Package": "svUnit",
