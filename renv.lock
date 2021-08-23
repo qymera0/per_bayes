@@ -120,10 +120,10 @@
     },
     "R6": {
       "Package": "R6",
-      "Version": "2.5.0",
+      "Version": "2.5.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "b203113193e70978a696b2809525649d"
+      "Hash": "470851b6d5d0ac559e9d01bb352b4021"
     },
     "RColorBrewer": {
       "Package": "RColorBrewer",
@@ -295,10 +295,10 @@
     },
     "brms": {
       "Package": "brms",
-      "Version": "2.15.0",
+      "Version": "2.16.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "fc74baf33468122b49024ba32e7c1a6a"
+      "Hash": "b220cc40a96e1083c72a7ff83c4ee6ab"
     },
     "broom": {
       "Package": "broom",
@@ -316,10 +316,10 @@
     },
     "cachem": {
       "Package": "cachem",
-      "Version": "1.0.5",
+      "Version": "1.0.6",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "5346f76a33eb7417812c270b04a5581b"
+      "Hash": "648c5b3d71e6a37e3043617489a0a0e9"
     },
     "callr": {
       "Package": "callr",
@@ -568,10 +568,10 @@
     },
     "emmeans": {
       "Package": "emmeans",
-      "Version": "1.6.2-1",
+      "Version": "1.6.3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "3bc0c21bd64b3a279d3a3ae138330b32"
+      "Hash": "7625ba5361c7336b87503b4a829d5883"
     },
     "estimability": {
       "Package": "estimability",
@@ -858,10 +858,10 @@
     },
     "httpuv": {
       "Package": "httpuv",
-      "Version": "1.6.1",
+      "Version": "1.6.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "54344a78aae37bc6ef39b1240969df8e"
+      "Hash": "a42959b003aad9fc351b10250c5a6b77"
     },
     "httr": {
       "Package": "httr",
@@ -945,10 +945,10 @@
     },
     "later": {
       "Package": "later",
-      "Version": "1.2.0",
+      "Version": "1.3.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "b61890ae77fea19fc8acadd25db70aa4"
+      "Hash": "7e7b457d7766bc47f2a5f21cc2984f8e"
     },
     "lattice": {
       "Package": "lattice",
@@ -1064,10 +1064,10 @@
     },
     "matrixStats": {
       "Package": "matrixStats",
-      "Version": "0.60.0",
+      "Version": "0.60.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "915f59111573046dc425410b435ab5ed"
+      "Hash": "c3cd22becabe4f29ee047221cc2b89ae"
     },
     "mcmcse": {
       "Package": "mcmcse",
@@ -1228,10 +1228,10 @@
     },
     "packrat": {
       "Package": "packrat",
-      "Version": "0.6.0",
+      "Version": "0.7.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "0d6cc4c357e7602bb3eee299f4cfc2a5"
+      "Hash": "95e8c3825efcaad09411799da92c0af9"
     },
     "parallelly": {
       "Package": "parallelly",
@@ -1480,10 +1480,10 @@
     },
     "rgl": {
       "Package": "rgl",
-      "Version": "0.107.10",
+      "Version": "0.107.14",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "c8fb4daf62e792d76760c95784aaa32a"
+      "Hash": "e7dc7599825dea5d5809478586948141"
     },
     "rio": {
       "Package": "rio",
@@ -1732,10 +1732,17 @@
     },
     "tensorflow": {
       "Package": "tensorflow",
-      "Version": "2.5.0",
+      "Version": "2.6.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "b51b9d9ab21c2cc66aeff458aba89a00"
+      "Hash": "d8cf6d71dfb687037c512ed535478593"
+    },
+    "tfautograph": {
+      "Package": "tfautograph",
+      "Version": "0.3.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "69cdf05b40b241f9a2691eabd575c992"
     },
     "tfruns": {
       "Package": "tfruns",
@@ -1760,10 +1767,10 @@
     },
     "tidybayes": {
       "Package": "tidybayes",
-      "Version": "3.0.0",
+      "Version": "3.0.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "c1b173079e37d8d4ab3f920674447191"
+      "Hash": "a85b9368f8af1d8e2e5ac4e7c7cc9f0b"
     },
     "tidyr": {
       "Package": "tidyr",
@@ -1924,13 +1931,13 @@
     },
     "xfun": {
       "Package": "xfun",
-      "Version": "0.25.1",
+      "Version": "0.25.3",
       "Source": "Repository",
       "Repository": "https://yihui.r-universe.dev",
       "RemoteUrl": "https://github.com/yihui/xfun",
       "RemoteRef": "HEAD",
-      "RemoteSha": "0c2ee10630b40ce813b203375521c9a6a0f8c408",
-      "Hash": "b61aa987cc6aa84c567830cd19162e3b"
+      "RemoteSha": "730d16c89996d0cd1bfa6a4038ef13fad47ae5ea",
+      "Hash": "703ab664874c685c047b3088f948aac0"
     },
     "xml2": {
       "Package": "xml2",
