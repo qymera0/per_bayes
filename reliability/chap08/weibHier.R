@@ -263,7 +263,7 @@ brmsForm <-
 
 priors <-
         set_prior("gamma(a, b)", class = "Intercept") + 
-        set_prior("gamma(c, d)", class = "shape", group = 'gen' ) + 
+        set_prior("gamma(c, d)", class = "shape", group = 'gen') + 
         set_prior("target += gamma_lpdf(a | 6, 0.4) - 1 * gamma_lccdf(0 | 6, 0.4) + 
                   gamma_lpdf(b | 2, 0.2) - 1 * gamma_lccdf(0 |2, 0.2) ", 
                   check = FALSE) + 
